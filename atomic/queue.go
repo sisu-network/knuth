@@ -6,7 +6,7 @@ type Queue interface {
 	Enqueue(el any)
 	Dequeue() any
 	Peek() any
-	Len()
+	Len() int
 }
 
 type queue struct {
@@ -14,7 +14,7 @@ type queue struct {
 	elements []any
 }
 
-func NewQueue() *queue {
+func NewQueue() Queue {
 	return &queue{
 		lock:     &sync.RWMutex{},
 		elements: make([]any, 0),
